@@ -5,30 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asiatik <asiatik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 08:50:52 by asiatik           #+#    #+#             */
-/*   Updated: 2025/02/13 09:12:36 by asiatik          ###   ########.fr       */
+/*   Created: 2025/02/04 13:32:46 by asiatik           #+#    #+#             */
+/*   Updated: 2025/02/04 17:17:35 by asiatik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	alpha_mirror(char *s)
+int	main(int ac, char **av)
 {
-	while (*s)
-	{
-		if (*s >= 'A' && (*s) <= 'Z')
-			*s = 'Z' - (*s) + 'A';
-		else if (*s >= 'a' && (*s) <= 'z')
-			*s = 'z' - (*s) + 'a';
-		write(1, s, 1);
-		s++;
-	}
-}
+	int i;
 
-int main(int ac, char **av)
-{
+	i = 0;
 	if (ac == 2)
-		alpha_mirror(av[1]);
+	{
+		while (av[1][i])
+		{
+			if (av[1][i] >= 'A' && av[1][i] <= 'Z')
+				av[1][i] = 'Z' - av[1][i] + 'A';
+			else if (av[1][i] >= 'a' && av[1][i] <= 'z')
+				av[1][i] = 122 - av[1][i] + 97;
+			write(1, &av[1][i], 1);
+			i++;
+		}
+	}
 	write(1, "\n", 1);
-	return (0);
 }

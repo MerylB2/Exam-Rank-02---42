@@ -1,0 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_list_size.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asiatik <asiatik@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/02 12:07:56 by asiatik           #+#    #+#             */
+/*   Updated: 2025/01/02 12:14:21 by asiatik          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+typedef	struct	s_list
+{
+	struct	s_list	*next;
+	void			*data;
+}				t_list;
+
+int	ft_list_size(t_list *begin_list)
+{
+	if (begin_list == 0)
+		return (0);
+	else
+		return (1 + ft_list_size(begin_list -> next));
+}
